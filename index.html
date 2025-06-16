@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic HTML setup and character encoding -->
+    <meta charset="UTF-8">
+    <!-- Make the page mobile-friendly -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title shown in browser tab -->
+    <title>My AI Journey Begins!</title>
+    <!-- CSS styles for making the page look nice -->
+    <style>
+        /* Modern dark theme with clean look */
+        :root {
+            --bg-color: #1a1a1a;
+            --container-bg: #2d2d2d;
+            --text-color: #ffffff;
+            --accent-color: #7289da;
+            --input-bg: #3d3d3d;
+            --hover-color: #5b6eae;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background-color: var(--container-bg);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 90%;
+            margin: 1rem;
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        form {
+            margin: 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            padding: 1rem;
+            font-size: 1rem;
+            background-color: var(--input-bg);
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            width: 100%;
+            max-width: 300px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--hover-color);
+            box-shadow: 0 0 0 3px rgba(114, 137, 218, 0.2);
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .welcome-message {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: var(--input-bg);
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .welcome-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .welcome-message h2 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .welcome-message p {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .welcome-message h2 {
+                font-size: 1.5rem;
+            }
+
+            input[type="text"], button {
+                max-width: 100%;
+            }
+        }
+
+        /* Animation for emojis */
+        .emoji {
+            display: inline-block;
+            animation: wave 2s infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            10% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            30% { transform: rotate(14deg); }
+            40% { transform: rotate(-4deg); }
+            50% { transform: rotate(10deg); }
+            60% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main container for all content -->
+    <div class="container">
+        <!-- Main heading -->
+        <h1>My AI Journey Begins! <span class="emoji">🚀</span></h1>
+        <!-- Form for submitting name -->
+        <form method="POST">
+            <input type="text" name="name" placeholder="Enter your name" required>
+            <button type="submit">Welcome Me!</button>
+        </form>
+        <!-- Welcome message section - only shows when name is provided -->
+        {% if name %}
+        <div class="welcome-message show">
+            <h2>Welcome, {{ name }}! <span class="emoji">👋</span></h2>
+            <p>It's great to have you here!</p>
+            <p>Enjoy your day! <span class="emoji">🌟</span></p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html> 
