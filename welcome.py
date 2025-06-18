@@ -20,8 +20,10 @@ def main():
         # Get the name from the form
         # If no name was provided, use an empty string
         name = request.form.get('name', '')
-        # Show the webpage with the name included
-        return render_template('index.html', name=name)
+        # Check if it's Jean Moncayo
+        is_special = name.lower() == 'jean moncayo'
+        # Show the webpage with the name and special flag
+        return render_template('index.html', name=name, is_special=is_special)
     # If it's a GET request (just visiting the page)
     # Show the webpage without a name
     return render_template('index.html')
